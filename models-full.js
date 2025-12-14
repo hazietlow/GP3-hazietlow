@@ -1,6 +1,6 @@
 import * as T from "./CS559-Three/build/three.module.js";
-import { OBJLoader } from "../CS559-Three/examples/jsm/loaders/OBJLoader.js";
-import { MTLLoader } from "../CS559-Three/examples/jsm/loaders/MTLLoader.js";
+import { OBJLoader } from "./CS559-Three/examples/jsm/loaders/OBJLoader.js";
+import { MTLLoader } from "./CS559-Three/examples/jsm/loaders/MTLLoader.js";
 
 /*
  * The fruits are free 3D models from as listed below:
