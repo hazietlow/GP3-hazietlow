@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../libs/CS559/style559.css" />
+  </head>
+
+  <body>
+    <canvas id="canvas1" height="600" width="600"></canvas>
+
+    <label for="tension-slider">Tension (-1.0 to 1.0): </label>
+    <input type="range" id="tension-slider" min="-1.0" max="1.0" step="0.1" value="0.0">
+
+    <script src="tr-01-01.js" type="module" defer></script>
+
+<!-- The screenshot and record buttons -->
+    <br><button onclick="screenshot('canvas1')">Screenshot</button> <button
+        onclick="record('canvas1','time')">Record</button> <input id="time" type="text" size="2" value="10"> seconds.
+    <script type="module">
+        import { screenshot, record } from "../libs/CS559/saveCanvas.js";
+        window.screenshot = screenshot;
+        window.record = record;
+    </script>
+  </body>
+</html>
+
+
+<!-- CS559 2025 Workbook -->

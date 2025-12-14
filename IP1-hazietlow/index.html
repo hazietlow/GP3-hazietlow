@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- CS559 Workbook Pages - page content &copy; 2021, Michael Gleicher -->
+<!-- This page is part of a Workbook developed for the 
+    CS559 Computer Graphics Class at the University of Wisconsin
+    https://graphics.cs.wisc.edu/Courses/559-sp2025/ -->
+    <head>
+	<meta name="generator" content="Hugo 0.140.2">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/workbook.css">
+        <script src="./js/resizeIFrames.js"></script>
+    </head>
+    <body>
+        <div class="container container--outer"><div class="maincolumn">
+
+
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Workbook 11: The Train Workbook</h1>
+	</header>
+	<div class="content main__content clearfix">
+        
+
+        <p>This workbook is due on Tuesday, October 14, 2025.</p><p>This project continues our study of curves in 2D. Last week&rsquo;s workbook went through the key ideas. This week, we&rsquo;ll put those ideas into action in a programming assignment: making a train that goes around a track.</p>
+<h2 id="required-reading">Required Reading</h2>
+<p>There is no new required reading for this week. The readings on curves were part of Workbook 5. You may want to review these readings (including the workbook itself). If you haven&rsquo;t read them, now is a good time to do so. Doing the train will require you to understand the key concepts of curves. Some curve topics are less important for the train, but will come back on exams, or, if you ever do something in computer graphics beyond class.</p>
+<p><strong>Textbook:</strong> Curves are covered in FCG4 Chapter 15. We won&rsquo;t cover all the material in class. The sections are:</p>
+<ol>
+<li>FCG 15.1 - basic ideas of curves, including parameterizations and piecewise representations</li>
+<li>FCG 15.2 - curve properties (especially continuity)</li>
+<li>FCG 15.3 - polynomial pieces - you need to have the basic intuitions but you will not need to do the derivations yourself</li>
+<li>FCG 15.4 - putting pieces together - this makes things sound more complicated than they are</li>
+<li>FCG 15.5 - cubics - you&rsquo;ll need cardinals for the train</li>
+<li>FCG 15.6.1 - Bézier curves - very important, since they are what gets used in Canvas and many other things</li>
+<li>FCG 15.6.2 - B-Spline curves - (and 15.6.3 and 15.6.4 which are advanced kinds of B-Spline curves) is optional</li>
+</ol>
+<h2 id="rubrics-for-grading">Rubrics for Grading</h2>
+  <div class="page-rubric-container">
+<details class="page__rubric">
+    <summary>Workbook Rubric (9 basic + 12 advanced (12 max) = 21 total)</summary>
+    <br/>
+    <table class="page-rubric-table" style="background-color: #f0f0f0;">
+        <thead>
+            <tr>
+                <th>Box</th>
+                <th>Basic</th>
+                <th>Advanced</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>1</td>
+                <td></td>
+                <td>correct P1 Workbook Form submission on time</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td>1</td>
+                <td></td>
+                <td>Drawing the track as a single simple curve (cardinal spline) that interpolates the control points</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td>1</td>
+                <td></td>
+                <td>Train goes around the track correctly (&#39;evenly in parameter space&#39; - continuous looping motion)</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td>1</td>
+                <td></td>
+                <td>The interface still works (the track can be moved and the run slider works, even while the train is in motion)</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td>1</td>
+                <td></td>
+                <td>Train has a front</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td>1</td>
+                <td></td>
+                <td>Train points in the right direction as it goes around the track</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td>1</td>
+                <td></td>
+                <td>Train direction and motion is correct even as points are added/removed</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td>1</td>
+                <td></td>
+                <td>Default (change the initial points) track configuration shows off arc length (train should speed up and slow down if arc length parameterization is turned off or not implemented)</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td>1</td>
+                <td></td>
+                <td>Arc Length parameterization (train goes at a relatively constant speed as it goes around the track, no matter what the control point spacing is). You must add a checkbox to turn this on and off.</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Rail Ties drawn perpendicular to track</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Rail Ties drawn with correct spacing (this is simple once you have arc-length</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Parallel rails</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Multiple cars all of them centered on the track</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Multiple cars that are fixed distance apart)</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Trucked wheels (requires keeping the pairs of wheels the correct distance apart and on the track, and having the train car positioned appropriately - this is only for people who are into trains and appreciate this detail)</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Slider to control tension</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Switchable B-Splines</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Smoke</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Scenery</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Scenery adapts to the track</td>
+            </tr>
+            <tr>
+                        <td><a href="./docs/1/#box-tr-01-01">tr-01-01</a></td>
+                <td></td>
+                <td>1</td>
+                <td>Disappearing or fading track as the train moves farther away</td>
+            </tr>
+        </tbody>
+    </table>
+</details>
+</div>
+<h2 id="get-started">Get Started</h2>
+<p>Don&rsquo;t forget to commit and push as you work!</p>
+<p>Get started on <a href="./docs/1/">Page &nbsp;1&nbsp; (The Train: Intro)</a>!</p>
+
+        
+	</div>
+</main>
+
+                </div>
+                    <div class="sidebar">
+<h2 class="Side_Title">Workbook 11: The Train Workbook</h2>
+<p class="Side__Note">Pages:</p>
+<ul class="Side__List">
+    <li class="Side__Item Side__Selected">Index (The Train Workbook) </li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/1/">1: The Train: Intro </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/2/">2: The Train: Assignment </a></li>
+</ul>
+</div>
+</div>
+    </body>
+</html>
