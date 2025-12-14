@@ -11,7 +11,7 @@ let nextDirection = new T.Vector3(1, 0, 0);
 let gameActive = false;
 let score = 0;
 let lastMoveTime = 0;
-const moveInterval = 150; 
+const moveInterval = 175; 
 let boardSize = 11;
 const diffButtons = document.querySelectorAll('.diff-btn');
 const gameHud = document.getElementById('ui-layer');
@@ -256,21 +256,24 @@ function setupControls() {
     };
 }
 
-startBtn.onclick = () => {
-    homeScreen.style.display = 'none';
-    resetGame();
-    gameActive = true;
-};
+window.addEventListener('DOMContentLoaded', () => {
+    // Re-verify buttons are linked
+    startBtn.onclick = () => {
+        homeScreen.style.display = 'none';
+        resetGame();
+        gameActive = true;
+    };
 
-restartBtn.onclick = () => {
-    gameOverScreen.style.display = 'none';
-    resetGame();
-    gameActive = true;
-};
+    restartBtn.onclick = () => {
+        gameOverScreen.style.display = 'none';
+        resetGame();
+        gameActive = true;
+    };
 
-backToMenuBtn.onclick = () => {
-    gameOverScreen.style.display = 'none';
-    homeScreen.style.display = 'flex';
-};
+    backToMenuBtn.onclick = () => {
+        gameOverScreen.style.display = 'none';
+        homeScreen.style.display = 'flex';
+    };
+});
 
 init();
