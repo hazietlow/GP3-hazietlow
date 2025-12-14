@@ -5,27 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Snake - CS Project</title>
     <style>
-        /* ... Keep your existing CSS styles here ... */
         body { 
             margin: 0; 
             overflow: hidden; 
-            background-color: #111; /* Match scene background */
+            background-color: #111;
         }
 
         canvas {
-            position: fixed; /* Fixes it to the viewport */
+            position: fixed; 
             top: 0;
             left: 0;
-            z-index: 1;    /* Lower layer */
+            z-index: 1;   
         }
 
         #home-screen, #ui-layer, #mobile-controls, #game-over-screen, #game-win-screen {
-            z-index: 100;  /* Much higher layer */
-            position: absolute; /* Ensures they sit above the canvas */
+            z-index: 100; 
+            position: absolute; 
         }
 
-        /* VERY IMPORTANT: This allows clicks to pass through the UI layer 
-        to the buttons, but prevents the background from blocking them. */
         #home-screen {
             background: rgba(0, 0, 0, 0.85);
             position: absolute;
@@ -35,8 +32,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 100; /* Higher than canvas */
-            pointer-events: auto; /* Changed from 'all' to 'auto' for better compatibility */
+            z-index: 100; 
+            pointer-events: auto; 
         }
 
         #ui-layer {
@@ -47,15 +44,15 @@
             background: rgba(0, 0, 0, 0.6);
             padding: 15px;
             border-radius: 8px;
-            pointer-events: none; /* Changed to none so it doesn't block clicks */
+            pointer-events: none; 
         }
 
         #mobile-controls {
             position: absolute;
             bottom: 20px;
-            left: 20px; /* Moved to the left */
+            left: 20px; 
             display: grid;
-            grid-template-columns: repeat(3, 60px); /* Slightly smaller buttons */
+            grid-template-columns: repeat(3, 60px); 
             grid-template-rows: repeat(2, 60px);
             gap: 8px;
             z-index: 20;
@@ -68,7 +65,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* ... keep your existing button colors/borders ... */
         }
 
         .up { grid-column: 2; grid-row: 1; }
@@ -85,11 +81,11 @@
             cursor: pointer;
             font-weight: bold;
 
-            display: inline-flex; /* Changed from flex to inline-flex */
+            display: inline-flex; 
             justify-content: center;
             align-items: center;
-            margin: 10px auto;    /* Centers the button in its parent */
-            width: auto;          /* Allows button to fit text width */
+            margin: 10px auto;    
+            width: auto;          
             min-width: 150px;
         }
 
@@ -103,7 +99,6 @@
             align-items: center;
             z-index: 100;
             color: white;
-            /* This creates a solid medium-gray background */
             background: #444444; 
         }
 
@@ -118,7 +113,7 @@
         .menu-box {
             display: flex;
             flex-direction: column;
-            align-items: center;  /* This centers the buttons horizontally */
+            align-items: center;  
             pointer-events: auto;
             z-index: 101;
         }
@@ -131,22 +126,22 @@
         input:checked + .slider:before { transform: translateX(26px); }
 
         #start-btn, #restart-btn, #back-to-menu-btn {
-            cursor: pointer; /* Shows the hand icon on hover */
+            cursor: pointer; 
             transition: transform 0.1s, background 0.2s;
         }
 
         #start-btn:hover {
-            background: #218838 !important; /* Darker green on hover */
-            transform: scale(1.05); /* Slightly grows the button */
+            background: #218838 !important; 
+            transform: scale(1.05); 
         }
 
         #home-screen {
-            z-index: 100; /* Ensure this is the highest number */
-            pointer-events: all; /* Forces the div to accept clicks */
+            z-index: 100; 
+            pointer-events: all; 
         }
 
         .diff-btn, #start-btn {
-            position: relative; /* Gives them their own stacking context */
+            position: relative; 
             z-index: 102;
             pointer-events: auto;
         }

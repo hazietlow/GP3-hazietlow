@@ -15,27 +15,17 @@ const fruitNames = ["melon", "orange", "peach", "strawberry", "watermelon"];
 
 fruitNames.forEach(name => {
     loadOBJWithMTL(name, (loadedGroup) => {
-        // We store the loaded group so we can clone it later
         fruitLibrary[name] = loadedGroup;
     });
 });
 
-// Initialize a texture loader
 const loader = new T.TextureLoader();
 
-// Replace these URLs with your actual hosted image paths on GitHub
-// For now, these are placeholders that use colors if the texture fails
 const snakeTexture = loader.load("./snakeScales.png");
 
-/**
- * FULL MODE: Snake Segment
- * Instead of a simple cube, we use a Rounded Box or a 
- * Cylinder to make it look more organic.
- */
 export function createSnakeSegmentFull() {
     const geometry = new T.CylinderGeometry(0.5, 0.5, 0.9, 12);
     
-    // Ensure texture repeats naturally
     snakeTexture.wrapS = T.RepeatWrapping;
     snakeTexture.wrapT = T.RepeatWrapping;
 
@@ -55,7 +45,6 @@ function normalizeModelSize(object, targetSize = 0.8) {
     const center = new T.Vector3();
     box.getCenter(center);
     
-    // Offset the children so the group's pivot is in the center
     object.children.forEach(child => {
         child.position.sub(center);
     });
@@ -66,7 +55,7 @@ function normalizeModelSize(object, targetSize = 0.8) {
     const scale = targetSize / maxAxis;
     object.scale.setScalar(scale);
 
-    return object; // IMPORTANT: Must return the object!
+    return object;
 }
 
 export function createFoodFull() {
@@ -75,7 +64,6 @@ export function createFoodFull() {
 
     if (original) {
         const clone = original.clone(true);
-        // Returns the group centered at (0,0,0)
         return normalizeModelSize(clone, 0.8);
     } else {
         const geometry = new T.SphereGeometry(0.4);
